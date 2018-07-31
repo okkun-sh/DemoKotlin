@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">DemoApplication</string>
+
+    <string-array name="menu_string_array">
+        <item>川柳投稿</item>
+        <item>川柳一覧</item>
+    </string-array>
+</resources>
