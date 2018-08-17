@@ -21,6 +21,9 @@
 
         <activity android:name=".ListActivity">
         </activity>
+
+        <activity android:name=".DataBindActivity">
+        </activity>
     </application>
     <uses-permission android:name="android.permission.INTERNET" />
 

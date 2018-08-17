@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val button = findViewById<Button>(R.id.button)
         val button2 = findViewById<Button>(R.id.button2)
+        val button3 = findViewById<Button>(R.id.button3)
 
         button.setOnClickListener {
             val intent = Intent(this, NextActivity::class.java)
@@ -20,6 +21,11 @@ class MainActivity : AppCompatActivity() {
 
         button2.setOnClickListener {
             val intent = Intent(this, ListActivity::class.java)
+            startActivity(intent)
+        }
+
+        button3.setOnClickListener {
+            val intent = Intent(this, DataBindActivity::class.java)
             startActivity(intent)
         }
     }
