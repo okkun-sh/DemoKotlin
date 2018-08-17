@@ -5,9 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import android.widget.TextView
-import com.example.okkun.firstapplication.R
 import com.example.okkun.firstapplication.data.Demo
+import com.example.okkun.firstapplication.databinding.EpisodeListBinding
 
 class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {
     private val inflater: LayoutInflater
@@ -17,22 +16,17 @@ class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-        var convertView = convertView
-        var holder: DemoViewHolder? = null
-
-        convertView?.let {
-            holder = it.tag as DemoViewHolder?
-        } ?: run {
-            convertView      = inflater.inflate(R.layout.episode_list, null)
-            holder           = DemoViewHolder(convertView?.findViewById(R.id.title) as TextView)
-            convertView?.tag = holder
+//        var convertView = convertView
+//        var holder: DemoViewHolder? = null
+        var binding: EpisodeListBinding
+        if (convertView == null) {
+            binding = EpisodeListBinding.inflate(inflater, parent, false)
+            binding.root.tag = binding
+        } else {
+            binding = convertView.tag as EpisodeListBinding
         }
-
-        holder?.let {
-            it.textView.text = items.get(position).name
-        }
-
-        return convertView as View
+        binding.demo = getItem(position) as Demo
+        return binding.root
     }
 
     override fun getItem(position: Int): Any {
@@ -48,5 +42,5 @@ class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {
     }
 
 
-    class DemoViewHolder(var textView: TextView)
+//    class DemoViewHolder(var textView: TextView)
 }
