@@ -10,9 +10,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val button = findViewById<Button>(R.id.button)
+        val button  = findViewById<Button>(R.id.button)
         val button2 = findViewById<Button>(R.id.button2)
         val button3 = findViewById<Button>(R.id.button3)
+        val button4 = findViewById<Button>(R.id.button4)
 
         button.setOnClickListener {
             val intent = Intent(this, NextActivity::class.java)
@@ -26,6 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         button3.setOnClickListener {
             val intent = Intent(this, DataBindActivity::class.java)
+            startActivity(intent)
+        }
+
+        button4.setOnClickListener {
+            val intent = Intent(this, EpisodeListActivity::class.java)
             startActivity(intent)
         }
     }

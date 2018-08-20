@@ -5,11 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
-import com.example.okkun.firstapplication.data.Demo
-import com.example.okkun.firstapplication.databinding.EpisodeListBinding
-import com.example.okkun.firstapplication.databinding.SampleRowBinding
+import com.example.okkun.firstapplication.data.Episode
+import com.example.okkun.firstapplication.databinding.EpisodeRowBinding
 
-class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {
+class EpisodeAdapter(var context: Context, var items: List<Episode>) : BaseAdapter() {
     private val inflater: LayoutInflater
 
     init {
@@ -17,16 +16,14 @@ class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {
     }
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-//        var convertView = convertView
-//        var holder: DemoViewHolder? = null
-        var binding: SampleRowBinding
+        var binding: EpisodeRowBinding
         if (convertView == null) {
-            binding = SampleRowBinding.inflate(inflater, parent, false)
+            binding = EpisodeRowBinding.inflate(inflater, parent, false)
             binding.root.tag = binding
         } else {
-            binding = convertView.tag as SampleRowBinding
+            binding = convertView.tag as EpisodeRowBinding
         }
-        binding.demo = getItem(position) as Demo
+        binding.episode = getItem(position) as Episode
         return binding.root
     }
 
@@ -41,7 +38,4 @@ class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {
     override fun getCount(): Int {
         return items.size
     }
-
-
-//    class DemoViewHolder(var textView: TextView)
 }

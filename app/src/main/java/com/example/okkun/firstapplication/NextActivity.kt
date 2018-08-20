@@ -51,7 +51,7 @@ class NextActivity : AppCompatActivity() {
                 )
 
                 mlistview.adapter = adapter
-//                var adapter = ArrayAdapter<String>(this@NextActivity, R.layout.episode_list)
+//                var adapter = ArrayAdapter<String>(this@NextActivity, R.layout.sample_row)
 
             }
 
