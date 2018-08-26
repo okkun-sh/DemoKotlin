@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import com.example.okkun.firstapplication.data.Demo
-import com.example.okkun.firstapplication.databinding.EpisodeListBinding
 import com.example.okkun.firstapplication.databinding.SampleRowBinding
 
 class DemoAdapter(var context: Context, var items: List<Demo>) : BaseAdapter() {

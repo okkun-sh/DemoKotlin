@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DemoApplication</string>
+    <string name="app_name">しくじり</string>
 
     <string-array name="menu_string_array">
         <item>川柳投稿</item>
