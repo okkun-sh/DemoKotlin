@@ -2,17 +2,14 @@ package com.example.okkun.firstapplication
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ListView
-import android.widget.TextView
-import com.example.okkun.firstapplication.adapter.DemoAdapter
+import android.support.v7.widget.LinearLayoutManager
 import com.example.okkun.firstapplication.adapter.EpisodeAdapter
 import com.example.okkun.firstapplication.api.EpisodeApiService
-import com.example.okkun.firstapplication.data.Demo
 import com.example.okkun.firstapplication.data.Episode
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
+import kotlinx.android.synthetic.main.episode_list.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,7 +23,8 @@ class EpisodeListActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.episode_list)
 
-        var mlistview = findViewById<ListView>(R.id.episode_list)
+//        val mlistview = findViewById<ListView>(R.id.episode_list)
+        recycler_view.layoutManager = LinearLayoutManager(this)
 
         val gson = GsonBuilder()
                 .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -48,7 +46,7 @@ class EpisodeListActivity : AppCompatActivity() {
                         this@EpisodeListActivity,
                         episodes
                 )
-                mlistview.adapter = adapter
+                recycler_view.adapter = adapter
             }
 
             override fun onFailure(call: Call<List<Episode>>?, t: Throwable?) {
