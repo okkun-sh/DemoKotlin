@@ -1,8 +1,11 @@
 package com.example.okkun.firstapplication
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.util.Log
+import android.view.View
 import com.example.okkun.firstapplication.adapter.EpisodeAdapter
 import com.example.okkun.firstapplication.api.EpisodeApiService
 import com.example.okkun.firstapplication.data.Episode
@@ -47,6 +50,13 @@ class EpisodeListActivity : AppCompatActivity() {
                         episodes
                 )
                 recycler_view.adapter = adapter
+
+                adapter.setOnItemClickListener(object : EpisodeAdapter.OnItemClickListener {
+                   override fun onClick(view: View, data: Episode) {
+                       val intent = Intent(this@EpisodeListActivity, EpisodeFormActivity::class.java)
+                       startActivity(intent)
+                    }
+                })
             }
 
             override fun onFailure(call: Call<List<Episode>>?, t: Throwable?) {

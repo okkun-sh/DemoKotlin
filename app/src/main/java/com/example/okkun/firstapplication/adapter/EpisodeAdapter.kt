@@ -5,6 +5,8 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.BaseAdapter
 import android.widget.TextView
 import com.example.okkun.firstapplication.R
@@ -45,20 +47,33 @@ import kotlinx.android.synthetic.main.episode_row.view.*
 //}
 
 class EpisodeAdapter(var context: Context, var items: List<Episode>) : RecyclerView.Adapter<EpisodeAdapter.ViewHolder>() {
+    lateinit var listener: OnItemClickListener
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        var mTitle = view.findViewById<TextView>(R.id.title)
-    }
+    class ViewHolder(var binding: EpisodeRowBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EpisodeAdapter.ViewHolder {
+        setOnItemClickListener(listener)
         val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.episode_row, parent, false)
-        return ViewHolder(view)
+        val binding = EpisodeRowBinding.inflate(view, parent, false)
+
+        return ViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mTitle.text = items[position].title
+        val data :Episode = items[position]
+        holder.binding.episode = data
+        holder.binding.originalLinearLayout.setOnClickListener({
+            listener.onClick(it, data)
+        })
     }
 
     override fun getItemCount() = items.size
+
+    interface OnItemClickListener {
+        fun onClick(view: View, data: Episode)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        this.listener = listener
+    }
 }
